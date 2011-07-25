@@ -15,10 +15,10 @@ module EventMachine
 
       def self.connect(*args)
         f = Fiber.current
-
+      
         conn = self.aconnect(*args)
         conn.callback { f.resume(conn) }
-
+      
         Fiber.yield
       end
 
